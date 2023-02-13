@@ -32,6 +32,10 @@ cat ${location}.data |sed '/^$/d'|tr -d '\n' | sed "s/----/\r\n/g"  >$location.f
 lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|grep "Your Guide:"|sed "s/^.*Your Guide: /${location},/g"  > $location.guide
 
 paste -d',' ${location}.guide ${location}.final > ${location}.data
+sed -i "" "s/2days,/16,/g" ${location}.data
+sed -i "" "s/3days,/24,/g" ${location}.data
+sed -i "" "s/4days,/32,/g" ${location}.data
+sed -i "" "s/5days,/40,/g" ${location}.data
 
 rm -rf ${location}.guide ${location}.final
 
