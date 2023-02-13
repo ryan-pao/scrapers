@@ -36,6 +36,15 @@ sed -i "" "s/2days,/16,/g" ${location}.data
 sed -i "" "s/3days,/24,/g" ${location}.data
 sed -i "" "s/4days,/32,/g" ${location}.data
 sed -i "" "s/5days,/40,/g" ${location}.data
+sed -i "" "s/6days,/48,/g" ${location}.data
+sed -i "" "s/7days,/56,/g" ${location}.data
+sed -i "" "s/8days,/64,/g" ${location}.data
+sed -i "" "s/9days,/72,/g" ${location}.data
+sed -i "" "s/10days,/80,/g" ${location}.data
+sed -i "" "s/11days,/88,/g" ${location}.data
+sed -i "" "s/12days,/96,/g" ${location}.data
+sed -i "" "s/13days,/104,/g" ${location}.data
+sed -i "" "s/14days,/112,/g" ${location}.data
 
 rm -rf ${location}.guide ${location}.final
 
