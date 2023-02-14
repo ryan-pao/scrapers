@@ -46,6 +46,7 @@ sed -i "" "s/12days,/96,/g" ./data/${location}.data
 sed -i "" "s/13days,/104,/g" ./data/${location}.data
 sed -i "" "s/14days,/112,/g" ./data/${location}.data
 
-rm -rf ${location}.guide ${location}.final
+rm -rf ${location}.guide ${location}.final ${location}.data
+
 
 
