@@ -6,17 +6,17 @@ Scrape tour properties from tbl
 https://www.toursbylocals.com/find_tour\&area=610\&p=10
 
 ----japan----
-osaka-Kobe-Nara:197
+osaka-kobe-nara:197
 kyoto:30
 fukuoka:438
 hakodate:1252
-hakone-Mt-Fuji-Japan:788
+hakone-mt-fuji-japan:788
 izu:1378
-hiroshima-Miyajima:30
+hiroshima-miyajima:30
 kagoshima:1275
 koyasan:612
 kumamoto:1100
-matsusaka-Iga-Mie:877
+matsusaka-iga-mie:877
 nagano:1382
 nagasaki:378
 nagoya:73
@@ -55,6 +55,7 @@ toronto:51
 telaviv:979
 riyadh:1593
 dubai:338
+
 ----ASIA----
 singapore:253
 newdelhi:103
