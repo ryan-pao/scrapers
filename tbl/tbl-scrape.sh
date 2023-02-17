@@ -22,6 +22,7 @@ echo location:$location
 echo  "" > ./data/${list}/${location}.data
 
 lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|grep -A2 "USD per tour"| 
+iconv -f utf8 -t ascii//TRANSLIT//IGNORE |
 sed "s/,//g" |
 sed "s/USD per tour/,/g" |tr -d '$' |
 sed "s/\[.*\]For up to//g" | sed "s/ people/,/g"|sed "s/limit//g"|sed "s/person//g"|
@@ -29,14 +30,14 @@ sed "s/\[.*\]For up to//g" | sed "s/ people/,/g"|sed "s/limit//g"|sed "s/person/
 sed "s/ //g" |sed "s/\\r//g" |
 sed "s/,/&/g"|
 sed "s/--//g" |
-sed "s/hour.*$/&,----/g" |sed "s/hour.//g"|sed "s/30min./\.5/g"|sed "s/10min./\.00xx/g"|
+sed "s/hour.*$/&,----/g" |sed "s/hour.//g"|sed "s/30min./\.5/g"|sed "s/10min.//g"|
 
 sed "s/days$/&,----/g" |
 sed '/^$/d' > ./data/${list}/$location.data
 
 cat ./data/${list}/${location}.data |sed '/^$/d'|tr -d '\n' | sed "s/----/\r\n/g"  > ./data/${list}/$location.final
 #lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10 > ${location}.raw
-lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|grep "Your Guide:"|sed "s/^.*Your Guide: /${location},'/g"|sed "s/ /\./g"|sed "s/$/'/g"  > ./data/${list}/$location.guide
+lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|iconv -f utf8 -t ascii//TRANSLIT//IGNORE |grep "Your Guide:"|sed "s/^.*Your Guide: /${location},'/g"|sed "s/ /\./g"|sed "s/$/'/g"  > ./data/${list}/$location.guide
 
 paste -d',' ./data/${list}/${location}.guide ./data/${list}/${location}.final > ./data/${list}/${location}.data
 sed -i "" "s/2days,/16,/g" ./data/${list}/${location}.data
