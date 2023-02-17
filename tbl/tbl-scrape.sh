@@ -12,7 +12,7 @@ do
 
 
 
-echo location:$location
+echo rendering:$location
 
 # sed "s/^/${location}, /" |
 
