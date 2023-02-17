@@ -29,7 +29,7 @@ sed '/^$/d' > $location.data
 
 cat ${location}.data |sed '/^$/d'|tr -d '\n' | sed "s/----/\r\n/g"  >$location.final
 #lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10 > ${location}.raw
-lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|grep "Your Guide:"|sed "s/^.*Your Guide: /${location},/g"  > $location.guide
+lynx -dump https://www.toursbylocals.com/find_tour\&area=$code\&p=10|grep "Your Guide:"|sed "s/^.*Your Guide: /${location},'/g"|sed "s/ /\./g"|sed "s/$/'/g"  > $location.guide
 
 paste -d',' ${location}.guide ${location}.final > ./data/${location}.data
 sed -i "" "s/2days,/16,/g" ./data/${location}.data
