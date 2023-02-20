@@ -1,4 +1,2 @@
-/data/*.data
-/.DS_Store
-/tbl/data
-/wowu/data/*
+.DS_Store
+*.data
