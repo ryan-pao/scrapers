@@ -1,7 +1,8 @@
 #! /bin/sh
 
 path=`pwd`
-list=${1:-japan}
+list=${1:-Japan}
+list=${list}-Tours
 
 
 for guide in `cat ./data/${list}/*.data|cut -d',' -f2|sort|uniq`
