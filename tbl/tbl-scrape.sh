@@ -4,7 +4,8 @@ export LANG=C
 
 
 path=`pwd`;
-list=${1:-Japan-Tours}
+list=${1:-Japan}
+list=${list}-Tours;
 mkdir ${path}/data/${list}
 
 
