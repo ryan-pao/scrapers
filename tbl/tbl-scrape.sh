@@ -1,7 +1,21 @@
 #! /bin/sh
 
 export LANG=C
-list=${1:-overseas}
+
+
+path=`pwd`;
+list=${1:-Japan-Tours}
+mkdir ${path}/data/${list}
+
+
+lynx -source https://www.toursbylocals.com/${list} |grep area= > ${path}/destinations/${list}.raw
+
+  grep -o 'area=[[:digit:]].*\"' ${path}/destinations/${list}.raw|cut -d'=' -f2|tr -d '"' > ${path}/destinations/code.list
+  cut -d ' ' -f7 ${path}/destinations/${list}.raw > ${path}/destinations/cities.list
+  paste -d':' ${path}/destinations/cities.list ${path}/destinations/code.list > ${path}/destinations/${list}.list
+  rm -rf ${path}/destinations/${list}.raw
+
+
 
 for c in `cat ./destinations/${list}.list`;
 do
