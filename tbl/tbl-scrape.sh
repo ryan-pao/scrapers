@@ -3,11 +3,11 @@
 export LANG=C
 list=${1:-overseas}
 
-for x in `cat ./destinations/${list}.list`;
+for c in `cat ./destinations/${list}.list`;
 do
 
-    location=`echo $x|cut -d':' -f1`;
-    code=`echo $x|cut -d':' -f2`;
+    location=`echo $c|cut -d':' -f1`;
+    code=`echo $c|cut -d':' -f2`;
 
 
 
@@ -53,6 +53,20 @@ sed -i "" "s/11days,/88,/g" ./data/${list}/${location}.data
 sed -i "" "s/12days,/96,/g" ./data/${list}/${location}.data
 sed -i "" "s/13days,/104,/g" ./data/${list}/${location}.data
 sed -i "" "s/14days,/112,/g" ./data/${list}/${location}.data
+
+
+    for r in `grep -o ",[[:digit:]].*-[[:digit:]].*," ./data/${list}/${location}.data |cut -d',' -f2`;
+        do
+
+        x=`echo ${r}|cut -d'-' -f1`
+        y=`echo ${r}|cut -d'-' -f2`
+#    z=$((${x}+${y}))
+        z=`echo  "scale=0; (${x}+${y})/2"|bc`
+
+    sed -i "" "s/${r}/${z}/g" ./data/${list}/${location}.data
+    done
+
+
 
 rm -rf ./data/${list}/${location}.guide ./data/${list}/${location}.final ${location}.data
 
