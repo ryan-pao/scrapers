@@ -14,13 +14,17 @@ total=`cat ./data/${target}/*.data |wc -l`
 for x in `cut -d',' -f3 ${path}/data/${target}/*.data`;
 do
 #   echo $x
-    num=$(( $num + ${x}))
+    price=$(($price + ${x}))
 done
-avg=`echo "scale=1; ${num}/${total}"| bc`;
+
+
+
+
+avgPrice=`echo "scale=2; ${price}/${total}"| bc`;
 
 uniqGuides=`cut -d',' -f2 ${path}/data/${target}/*.data |sort |uniq |wc -l`
 
-echo ${target}:${total} services avg:$ ${avg} guides:${uniqGuides} people
+echo ${target}:${total} services avg:$ ${avgPrice} guides:${uniqGuides} people 
 
 # GUIDES
 
