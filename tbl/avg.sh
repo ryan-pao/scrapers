@@ -8,6 +8,7 @@ target=${1:-Japan};
 target=${target}-Tours
 path=`pwd`;
 total=`cat ./data/${target}/*.data |wc -l`
+locations=`ls -1 ./data/${target} | wc -l`;
 
 
 # AVERAGE PRICE
@@ -21,10 +22,12 @@ done
 
 
 avgPrice=`echo "scale=2; ${price}/${total}"| bc`;
-
 uniqGuides=`cut -d',' -f2 ${path}/data/${target}/*.data |sort |uniq |wc -l`
+perGuide=`echo "scale=2; ${total}/${uniqGuides}"|bc`;
 
-echo ${target}:${total} services avg:$ ${avgPrice} guides:${uniqGuides} people 
+
+
+echo ${target}:${total}:locations:${locations} services avg:$ ${avgPrice} guides:${uniqGuides}  avg offer ${perGuide}
 
 # GUIDES
 
